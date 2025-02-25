@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gay支f</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #qrcode {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .expired {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p>请扫描二维码完成支付</(p>
+    <div id="qrcode">
+        <img id="qrcode-img" src="IMG_20250220_145947" alt="支付二维码">
+    </div>
+    <p id="status">二维码有效时间剩余: <span id="countdown">60</span>秒</p>
+
+    <script>
+        // 二维码有效时间（单位：秒）
+        let countdown = 60;
+        const countdownElement = document.getElementById('countdown');
+        const qrcodeImg = document.getElementById('qrcode-img');
+
+        // 倒计时函数
+        function updateCountdown() {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            // 如果倒计时结束
+            if (countdown <= 0) {
+                clearInterval(interval); // 停止倒计时
+                window.location.href = 'expired.html'; // 跳转到失效页面
+            }
+        }
+
+        // 每秒钟更新一次倒计时
+        const interval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
