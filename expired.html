@@ -23,32 +23,11 @@
     </style>
 </head>
 <body>
-    <p class="expired">二维码已失效</p>
-    <p>请点击按钮重新生成二维码。</p>
+    <p class="expired">二维码已失效 !</p>
+    <p></p>
     <div id="new-qrcode">
         <img width="200" id="new-qrcode-img" src="m.0089525.com_qrcodenotfound.13498449.jpg" alt="新支付二维码">
     </div>
-    <button id="generate-button">重新生成二维码</button>
-
-    <script>
-        // 重新生成二维码
-        function generateNewQRCode() {
-            // 模拟调用后端接口生成新的二维码
-            fetch('/generate-qrcode') // 假设后端接口为 /generate-qrcode
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('new-qrcode-img').src = data.qrcodeUrl; // 更新二维码图片
-                })
-                .catch(error => {
-                    console.error('生成二维码失败:', error);
-                });
-        }
-
-        // 用户点击重新生成二维码
-        document.getElementById('generate-button').addEventListener('click', generateNewQRCode);
-
-        // 页面加载时自动生成新的二维码
-        generateNewQRCode();
-    </script>
+    
 </body>
 </html>
